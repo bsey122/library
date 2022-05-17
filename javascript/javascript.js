@@ -14,7 +14,7 @@ function displayBook() {
     myLibrary.forEach(book => {
         let tableRow = document.createElement('tr');
         for (const key in book) {
-            if (Object.hasOwnProperty.call(book, key)) {
+            if (book.hasOwnProperty(key)) {;
                 const element = book[key];
                 let tableData = document.createElement('td');
                 tableData.textContent = element;
