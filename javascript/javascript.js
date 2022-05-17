@@ -6,3 +6,6 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
 }
+Book.prototype.addBookToLibrary = function () {
+    myLibrary.push(this);
+}
