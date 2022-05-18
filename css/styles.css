@@ -24,3 +24,6 @@
     font-size: 1.25rem;
     font-weight: bold;
 }
+.modal form {
+    padding: 10px 15px;
+}
