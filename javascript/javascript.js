@@ -30,3 +30,15 @@ function displayBook() {
 const openModalButton = document.querySelector('.open-modal-button');
 const closeModalButton = document.querySelector('.modal-close-button');
 const overlay = document.querySelector('#overlay');
+
+openModalButton.addEventListener('click', () => {// Event listener to open modal when button is clicked
+    const modal = document.querySelector('.modal');
+    openModal(modal);
+});
+function openModal(modal) {// Adds active classes to modal
+    if (modal == null) {
+        return
+    }
+    modal.classList.add('active');
+    overlay.classList.add('active');
+}
