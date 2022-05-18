@@ -11,7 +11,7 @@ Book.prototype.addBookToLibrary = function () {
 }
 /* Displays book objects using DOM manipulation. book.hasOwnProperty(key) was used so 
 that the addBookToLibrary method is excluded when looping through book object. This is becuase
-each book object inherits the addBookToLibrary method from Book prototype property*/
+each book object inherits the addBookToLibrary method from Book prototype property */
 function displayBook() {
     const table = document.querySelector('tbody');
     myLibrary.forEach(book => {
@@ -27,3 +27,6 @@ function displayBook() {
         }
     });
 }
+const openModalButton = document.querySelector('.open-modal-button');
+const closeModalButton = document.querySelector('.modal-close-button');
+const overlay = document.querySelector('#overlay');
