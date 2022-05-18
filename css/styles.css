@@ -10,3 +10,9 @@
     width: 500px;
     max-width: 80%;
 }
+.modal-header {
+    display: flex;
+    padding: 10px 15px;
+    justify-content: flex-end;
+    align-items: center;
+}
