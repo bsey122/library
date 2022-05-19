@@ -47,8 +47,10 @@ overlay.addEventListener('click', () => { // Event listener to close modal when 
 });
 
 addBookButton.addEventListener('click', (e) => { // Event listener to add and display book objects
+    e.preventDefault();
     addBook();
     displayBook();
+    closeModal(modal);
 });
 
 function openModal(modal) {// Adds active classes to modal and overlay
