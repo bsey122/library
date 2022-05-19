@@ -30,6 +30,7 @@ function displayBook() {
 const openModalButton = document.querySelector('.open-modal-button');
 const closeModalButton = document.querySelector('.modal-close-button');
 const overlay = document.querySelector('#overlay');
+const addBookButton = document.querySelector('.form-button');
 
 openModalButton.addEventListener('click', () => {// Event listener to open modal when button is clicked
     const modal = document.querySelector('.modal');
@@ -44,7 +45,12 @@ closeModalButton.addEventListener('click', () => {// Event listener to close mod
 overlay.addEventListener('click', () => { // Event listener to close modal when overlay is clicked
     const modal = document.querySelector('.modal');
     closeModal(modal);
-})
+});
+
+addBookButton.addEventListener('click', () => {
+    addBook();
+    displayBook();
+});
 
 function openModal(modal) {// Adds active classes to modal and overlay
     if (modal == null) {
@@ -60,4 +66,13 @@ function closeModal(modal) {// Removes active class from modal and overlay
     }
     modal.classList.remove('active');
     overlay.classList.remove('active');
+}
+
+function addBook() {
+    let formTitle = document.querySelector('#title').value;
+    let formAuthor = document.querySelector('#author').value;
+    let formPages = document.querySelector('#pages').value;
+    let formRead = document.querySelector('#read').checked;
+    let newBook = new Book(formTitle, formAuthor, formPages, formRead);
+    newBook.addBookToLibrary();
 }
