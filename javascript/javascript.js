@@ -47,7 +47,7 @@ overlay.addEventListener('click', () => { // Event listener to close modal when 
     closeModal(modal);
 });
 
-addBookButton.addEventListener('click', () => {
+addBookButton.addEventListener('click', () => { // Event listener to add and display book objects
     addBook();
     displayBook();
 });
@@ -68,7 +68,7 @@ function closeModal(modal) {// Removes active class from modal and overlay
     overlay.classList.remove('active');
 }
 
-function addBook() {
+function addBook() { // Gets information from forms
     let formTitle = document.querySelector('#title').value;
     let formAuthor = document.querySelector('#author').value;
     let formPages = document.querySelector('#pages').value;
