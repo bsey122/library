@@ -41,6 +41,11 @@ closeModalButton.addEventListener('click', () => {// Event listener to close mod
     closeModal(modal);
 });
 
+overlay.addEventListener('click', () => { // Event listener to close modal when overlay is clicked
+    const modal = document.querySelector('.modal');
+    closeModal(modal);
+})
+
 function openModal(modal) {// Adds active classes to modal and overlay
     if (modal == null) {
         return
