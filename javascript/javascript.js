@@ -65,6 +65,7 @@ function closeModal(modal) {// Removes active class from modal and overlay
     }
     modal.classList.remove('active');
     overlay.classList.remove('active');
+    clearModal();
 }
 
 function addBook() { // Gets information from forms
