@@ -35,10 +35,24 @@ openModalButton.addEventListener('click', () => {// Event listener to open modal
     const modal = document.querySelector('.modal');
     openModal(modal);
 });
-function openModal(modal) {// Adds active classes to modal
+
+closeModalButton.addEventListener('click', () => {// Event listener to close modal when button is clicked
+    const modal = document.querySelector('.modal');
+    closeModal(modal);
+});
+
+function openModal(modal) {// Adds active classes to modal and overlay
     if (modal == null) {
         return
     }
     modal.classList.add('active');
     overlay.classList.add('active');
+}
+
+function closeModal(modal) {// Removes active class from modal and overlay
+    if (modal == null) {
+        return
+    }
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
 }
