@@ -79,5 +79,6 @@ function clearModal() {
     const inputs = document.querySelectorAll('input');
     inputs.forEach(input => {
         input.value = '';
+        input.checked = false;
     });
 }
