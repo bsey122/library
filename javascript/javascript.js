@@ -31,23 +31,22 @@ const openModalButton = document.querySelector('.open-modal-button');
 const closeModalButton = document.querySelector('.modal-close-button');
 const overlay = document.querySelector('#overlay');
 const addBookButton = document.querySelector('.form-button');
+const modal = document.querySelector('.modal');
 
 openModalButton.addEventListener('click', () => {// Event listener to open modal when button is clicked
-    const modal = document.querySelector('.modal');
     openModal(modal);
 });
 
 closeModalButton.addEventListener('click', () => {// Event listener to close modal when button is clicked
-    const modal = document.querySelector('.modal');
+    
     closeModal(modal);
 });
 
 overlay.addEventListener('click', () => { // Event listener to close modal when overlay is clicked
-    const modal = document.querySelector('.modal');
     closeModal(modal);
 });
 
-addBookButton.addEventListener('click', () => { // Event listener to add and display book objects
+addBookButton.addEventListener('click', (e) => { // Event listener to add and display book objects
     addBook();
     displayBook();
 });
@@ -75,4 +74,10 @@ function addBook() { // Gets information from forms
     let formRead = document.querySelector('#read').checked;
     let newBook = new Book(formTitle, formAuthor, formPages, formRead);
     newBook.addBookToLibrary();
+}
+function clearModal() {
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.value = '';
+    });
 }
