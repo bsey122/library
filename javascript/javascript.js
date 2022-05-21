@@ -14,18 +14,18 @@ that the addBookToLibrary method is excluded when looping through book object. T
 each book object inherits the addBookToLibrary method from Book prototype property */
 function displayBook() {
     const table = document.querySelector('tbody');
-    myLibrary.forEach(book => {
-        let tableRow = document.createElement('tr');
-        for (const key in book) {
-            if (book.hasOwnProperty(key)) {
-                const element = book[key];
-                let tableData = document.createElement('td');
-                tableData.textContent = element;
-                tableRow.appendChild(tableData);
-            }
-            table.appendChild(tableRow);
+    let book = myLibrary[myLibrary.length - 1];
+    let tableRow = document.createElement('tr');
+    for (const key in book) {
+        if (book.hasOwnProperty(key)) {
+            const element = book[key];
+            let tableData = document.createElement('td');
+            tableData.textContent = element;
+            tableRow.appendChild(tableData);
         }
-    });
+        table.appendChild(tableRow);
+    }
+    console.log(myLibrary);
 }
 const openModalButton = document.querySelector('.open-modal-button');
 const closeModalButton = document.querySelector('.modal-close-button');
