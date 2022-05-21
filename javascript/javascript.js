@@ -25,7 +25,6 @@ function displayBook() {
         }
         table.appendChild(tableRow);
     }
-    console.log(myLibrary);
 }
 const openModalButton = document.querySelector('.open-modal-button');
 const closeModalButton = document.querySelector('.modal-close-button');
@@ -78,7 +77,7 @@ function addBook() { // Gets information from forms
     let newBook = new Book(formTitle, formAuthor, formPages, formRead);
     newBook.addBookToLibrary();
 }
-function clearModal() {
+function clearModal() { // Clears values from modal form
     const inputs = document.querySelectorAll('input');
     inputs.forEach(input => {
         input.value = '';
