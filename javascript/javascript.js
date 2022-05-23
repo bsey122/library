@@ -13,9 +13,10 @@ Book.prototype.addBookToLibrary = function () {
 that the addBookToLibrary method is excluded when looping through book object. This is becuase
 each book object inherits the addBookToLibrary method from Book prototype property */
 function displayBook() {
-    const table = document.querySelector('tbody');
     let book = myLibrary[myLibrary.length - 1];
     let tableRow = document.createElement('tr');
+    let tableData = document.createElement('td');
+    let removeButton = document.createElement('button');
     for (const key in book) {
         if (book.hasOwnProperty(key)) {
             const element = book[key];
@@ -23,21 +24,27 @@ function displayBook() {
             tableData.textContent = element;
             tableRow.appendChild(tableData);
         }
+        removeButton.setAttribute('data-remove-button-id', `table-row-${myLibrary.length - 1}`);
+        removeButton.textContent = 'remove';
+        tableData.appendChild(removeButton);
+        tableRow.appendChild(tableData);
+        tableRow.setAttribute('id', `table-row-${myLibrary.length - 1}`);
         table.appendChild(tableRow);
     }
+    console.log(myLibrary.length - 1);
 }
 const openModalButton = document.querySelector('.open-modal-button');
 const closeModalButton = document.querySelector('.modal-close-button');
 const overlay = document.querySelector('#overlay');
 const addBookButton = document.querySelector('.form-button');
 const modal = document.querySelector('.modal');
+const table = document.querySelector('tbody');
 
 openModalButton.addEventListener('click', () => {// Event listener to open modal when button is clicked
     openModal(modal);
 });
 
-closeModalButton.addEventListener('click', () => {// Event listener to close modal when button is clicked
-    
+closeModalButton.addEventListener('click', () => {// Event listener to close modal when button is clicked    
     closeModal(modal);
 });
 
