@@ -58,6 +58,11 @@ addBookButton.addEventListener('click', (e) => { // Event listener to add and di
     displayBook();
     closeModal(modal);
 });
+/* Event listener set on table element so that the dynamically created remove buttons can have events binded
+to them through bubbling */
+table.addEventListener('click', (e) => {
+    removeTableRow(e);
+});
 
 function openModal(modal) {// Adds active classes to modal and overlay
     if (modal == null) {
@@ -90,4 +95,9 @@ function clearModal() { // Clears values from modal form
         input.value = '';
         input.checked = false;
     });
+}
+function removeTableRow(e) { // Removes book information from table
+    const tableRowId = e.target.dataset.removeButtonId;
+    const tableRowRemove = document.querySelector(`#${tableRowId}`);
+    tableRowRemove.remove();
 }
