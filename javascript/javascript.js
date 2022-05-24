@@ -31,7 +31,6 @@ function displayBook() {
         tableRow.setAttribute('id', `table-row-${myLibrary.length - 1}`);
         table.appendChild(tableRow);
     }
-    console.log(myLibrary.length - 1);
 }
 const openModalButton = document.querySelector('.open-modal-button');
 const closeModalButton = document.querySelector('.modal-close-button');
@@ -97,7 +96,9 @@ function clearModal() { // Clears values from modal form
     });
 }
 function removeTableRow(e) { // Removes book information from table
-    const tableRowId = e.target.dataset.removeButtonId;
-    const tableRowRemove = document.querySelector(`#${tableRowId}`);
-    tableRowRemove.remove();
+    if (e.target.dataset.removeButtonId) {
+        const tableRowId = e.target.dataset.removeButtonId;
+        const tableRowRemove = document.querySelector(`#${tableRowId}`);
+        tableRowRemove.remove();
+    }
 }
