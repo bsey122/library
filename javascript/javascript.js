@@ -95,10 +95,15 @@ function clearModal() { // Clears values from modal form
         input.checked = false;
     });
 }
-function removeTableRow(e) { // Removes book information from table
+function removeTableRow(e) { // Removes book information from table and myLibrary array
     if (e.target.dataset.removeButtonId) {
         const tableRowId = e.target.dataset.removeButtonId;
         const tableRowRemove = document.querySelector(`#${tableRowId}`);
         tableRowRemove.remove();
+        const tableTitle = tableRowRemove.firstChild.textContent;
+        let index = myLibrary.findIndex(function (bookTitle) {
+            return bookTitle.title === tableTitle;
+        });
+        myLibrary.splice(index, 1);
     }
 }
