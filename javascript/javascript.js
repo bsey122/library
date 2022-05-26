@@ -9,6 +9,13 @@ function Book(title, author, pages, read) {// Constructor to make book objects
 Book.prototype.addBookToLibrary = function () {
     myLibrary.push(this);
 }
+Book.prototype.toggleReadBook = function () {
+    if (this.read) {
+        this.read = false;
+    } else {
+        this.read = true;
+    }
+}
 /* Displays book objects using DOM manipulation. book.hasOwnProperty(key) was used so 
 that the addBookToLibrary method is excluded when looping through book object. This is becuase
 each book object inherits the addBookToLibrary method from Book prototype property */
@@ -17,20 +24,29 @@ function displayBook() {
     let tableRow = document.createElement('tr');
     let tableData = document.createElement('td');
     let removeButton = document.createElement('button');
+    let toggleReadButton = document.createElement('button');
     for (const key in book) {
         if (book.hasOwnProperty(key)) {
             const element = book[key];
             let tableData = document.createElement('td');
-            tableData.textContent = element;
-            tableRow.appendChild(tableData);
+            if (key === 'read') {
+                toggleReadButton;
+                toggleReadButton.setAttribute('data-toggle-button-id', `table-row-${myLibrary.length - 1}`);
+                toggleReadDisplay(element, toggleReadButton);
+                tableData.appendChild(toggleReadButton);
+                tableRow.appendChild(tableData);
+            } else {
+                tableData.textContent = element;
+                tableRow.appendChild(tableData);
+            }
         }
-        removeButton.setAttribute('data-remove-button-id', `table-row-${myLibrary.length - 1}`);
-        removeButton.textContent = 'remove';
-        tableData.appendChild(removeButton);
-        tableRow.appendChild(tableData);
-        tableRow.setAttribute('id', `table-row-${myLibrary.length - 1}`);
-        table.appendChild(tableRow);
     }
+    removeButton.setAttribute('data-remove-button-id', `table-row-${myLibrary.length - 1}`);
+    removeButton.textContent = 'remove';
+    tableData.appendChild(removeButton);
+    tableRow.appendChild(tableData);
+    tableRow.setAttribute('id', `table-row-${myLibrary.length - 1}`);
+    table.appendChild(tableRow);
 }
 const openModalButton = document.querySelector('.open-modal-button');
 const closeModalButton = document.querySelector('.modal-close-button');
@@ -61,6 +77,7 @@ addBookButton.addEventListener('click', (e) => { // Event listener to add and di
 to them through bubbling */
 table.addEventListener('click', (e) => {
     removeTableRow(e);
+    toggleRead(e);
 });
 
 function openModal(modal) {// Adds active classes to modal and overlay
@@ -105,5 +122,26 @@ function removeTableRow(e) { // Removes book information from table and myLibrar
             return bookTitle.title === tableTitle;
         });
         myLibrary.splice(index, 1);
+    }
+}
+function toggleRead(e) {
+    if (e.target.dataset.toggleButtonId) {
+        const tableRowId = e.target.dataset.toggleButtonId;
+        const tableRow = document.querySelector(`#${tableRowId}`);
+        const toggleButton = e.target;
+        const tableTitle = tableRow.firstChild.textContent;
+        let index = myLibrary.findIndex(function (bookTitle) {
+            return bookTitle.title === tableTitle;
+        });
+        myLibrary[index].toggleReadBook();
+        let read = myLibrary[index].read;
+        toggleReadDisplay(read, toggleButton);
+    }
+}
+function toggleReadDisplay(read, toggleButton) {
+    if (read) {
+        toggleButton.textContent = 'read';
+    } else {
+        toggleButton.textContent = 'not read';
     }
 }
