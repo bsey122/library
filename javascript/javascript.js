@@ -114,7 +114,6 @@ function clearModal() { // Clears values from modal form
 }
 function removeTableRow(e) { // Removes book information from table and myLibrary array
     if (e.target.dataset.removeButtonId) {
-        const tableRowId = e.target.dataset.removeButtonId;
         const tableRowRemove = e.target.parentNode.parentNode;
         tableRowRemove.remove();
         const tableTitle = tableRowRemove.firstChild.textContent;
@@ -126,7 +125,6 @@ function removeTableRow(e) { // Removes book information from table and myLibrar
 }
 function toggleRead(e) {
     if (e.target.dataset.toggleButtonId) {
-        const tableRowId = e.target.dataset.toggleButtonId;
         const tableRow = e.target.parentNode.parentNode;
         const toggleButton = e.target;
         const tableTitle = tableRow.firstChild.textContent;
