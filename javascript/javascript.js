@@ -123,7 +123,7 @@ function removeTableRow(e) { // Removes book information from table and myLibrar
         myLibrary.splice(index, 1);
     }
 }
-function toggleRead(e) {
+function toggleRead(e) { // Toggles the read status of a book object in the myLibrary array and calls toggleReadDisplay
     if (e.target.dataset.toggleButtonId) {
         const tableRow = e.target.parentNode.parentNode;
         const toggleButton = e.target;
@@ -136,7 +136,7 @@ function toggleRead(e) {
         toggleReadDisplay(read, toggleButton);
     }
 }
-function toggleReadDisplay(read, toggleButton) {
+function toggleReadDisplay(read, toggleButton) { // Toggles the text of the button to display if the book has been read or not
     if (read) {
         toggleButton.textContent = 'read';
     } else {
