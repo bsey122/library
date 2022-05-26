@@ -31,7 +31,7 @@ function displayBook() {
             let tableData = document.createElement('td');
             if (key === 'read') {
                 toggleReadButton;
-                toggleReadButton.setAttribute('data-toggle-button-id', `table-row-${myLibrary.length - 1}`);
+                toggleReadButton.setAttribute('data-toggle-button-id', `table-row`);
                 toggleReadDisplay(element, toggleReadButton);
                 tableData.appendChild(toggleReadButton);
                 tableRow.appendChild(tableData);
@@ -41,11 +41,11 @@ function displayBook() {
             }
         }
     }
-    removeButton.setAttribute('data-remove-button-id', `table-row-${myLibrary.length - 1}`);
+    removeButton.setAttribute('data-remove-button-id', `table-row`);
     removeButton.textContent = 'remove';
     tableData.appendChild(removeButton);
     tableRow.appendChild(tableData);
-    tableRow.setAttribute('id', `table-row-${myLibrary.length - 1}`);
+    tableRow.setAttribute('id', `table-row`);
     table.appendChild(tableRow);
 }
 const openModalButton = document.querySelector('.open-modal-button');
