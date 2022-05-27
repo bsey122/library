@@ -139,7 +139,9 @@ function toggleRead(e) { // Toggles the read status of a book object in the myLi
 function toggleReadDisplay(read, toggleButton) { // Toggles the text of the button to display if the book has been read or not
     if (read) {
         toggleButton.textContent = 'read';
+        toggleButton.setAttribute('style', 'background-color: #00984c');
     } else {
         toggleButton.textContent = 'not read';
+        toggleButton.setAttribute('style', 'background-color: #980500');
     }
 }
