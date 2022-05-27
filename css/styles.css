@@ -1,9 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=PT+Serif&display=swap');
+:root {
+    --primary-color: #009879;
+    --ff-sans-serif: 'Open Sans', sans-serif;
+    --ff-serif: 'PT Serif', serif;
+    font-family: var(--ff-sans-serif);
+}
+.header h1,
+table thead tr th,
+legend,
+label {
+    font-family: var(--ff-serif);
+}
+.header h1,
+table thead tr th,
+legend {
+    letter-spacing: 0.1rem;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+th,
+td {
+    padding: 12px 15px;
+}
+table thead tr {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: left;
+}
+table tbody tr {
+    border-bottom: thin solid #ddd;
+}
+table tbody tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+table tbody tr:last-child {
+    border-bottom: 2px solid var(--primary-color);
+}
+.content {
+    width: 700px;
+}
+button {
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    font-size: 1rem;
+    background-color: #980500;
+}
+.open-modal-button,
+.form-button {
+    padding: 15px 32px;
+    background-color: var(--primary-color);
+}
+.form-button,
+legend {
+    margin: 20px 0;
+}
 .modal {
     position: fixed;
-    top: 50%;
+    /* Left,top, and transform are used to center the modal */
     left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%) scale(0);
-    border: 1px solid black;
     border-radius: 10px;
     z-index: 10;
     background-color: white;
@@ -26,9 +92,37 @@
     background: none;
     font-size: 1.25rem;
     font-weight: bold;
+    color: black;
+    padding: 10px;
+}
+.modal-close-button:hover {
+    color: red;
 }
 .modal form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 10px 15px;
+}
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+form p {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem;
+}
+form p:last-child { /* Selects the checkbox and its label */
+    align-self: center;
+}
+form p label {
+    padding-right: 1rem;
+}
+input[type = text],
+input[type = number] {
+    width: 300px;
+    padding-top: 3px;
 }
 #overlay {
     position: fixed;
