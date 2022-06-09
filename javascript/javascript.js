@@ -1,19 +1,21 @@
 let myLibrary = [];// Holds book objects
 
-function Book(title, author, pages, read) {// Constructor to make book objects
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
-Book.prototype.addBookToLibrary = function () {
-    myLibrary.push(this);
-}
-Book.prototype.toggleReadBook = function () {
-    if (this.read) {
-        this.read = false;
-    } else {
-        this.read = true;
+class Book {// Class to make book objects
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    addBookToLibrary() {
+        myLibrary.push(this);
+    }
+    toggleReadBook() {
+        if (this.read) {
+            this.read = false;
+        } else {
+            this.read = true;
+        }
     }
 }
 /* Displays book objects using DOM manipulation. book.hasOwnProperty(key) was used so 
