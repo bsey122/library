@@ -124,6 +124,13 @@ input[type = number] {
     width: 300px;
     padding-top: 3px;
 }
+input:invalid {
+    border-color: #900;
+    background-color: #fdd;
+}
+input:focus:invalid {
+    outline: none;
+}
 #overlay {
     position: fixed;
     opacity: 0;
