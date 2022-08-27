@@ -147,3 +147,43 @@ function toggleReadDisplay(read, toggleButton) { // Toggles the text of the butt
         toggleButton.setAttribute('style', 'background-color: #980500');
     }
 }
+
+const formTitle = document.querySelector('#title');
+const formAuthor = document.querySelector('#author');
+const formPages = document.querySelector('#pages');
+const form = document.querySelector('#form');
+
+formTitle.addEventListener('input', (e) =>{
+    checkFormValidity(formTitle, e);
+});
+
+formAuthor.addEventListener('input', (e) => {
+    checkFormValidity(formAuthor, e);
+});
+
+formPages.addEventListener('input', (e) => {
+    checkFormValidity(formPages, e);
+});
+
+form.addEventListener('submit', (e) => { // The form is not being submitted so this doesn't work
+    checkFormValidity(form, e);
+});
+
+function checkFormValidity(formElement, e) {
+    if (!formElement.validity.valid) {
+        showError(formElement);
+        e.preventDefault();
+    }
+}
+
+function showError(formElement) {
+    if (formElement.validity.valueMissing) {
+        formElement.setCustomValidity('Please enter a vaule');
+        formElement.reportValidity();
+    } else if (formElement.validity.rangeUnderflow) {
+        formElement.setCustomValidity('The amount of pages must be at least 1');
+        formElement.reportValidity();
+    } else {
+        formElement.setCustomValidity('');
+    }
+}
